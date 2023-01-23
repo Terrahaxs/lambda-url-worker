@@ -1,0 +1,9 @@
+version = 0.1
+[default]
+[default.deploy]
+[default.deploy.parameters]
+region = "us-west-2"
+stack_name = "terrahaxs-api-worker"
+resolve_image_repos = true
+resolve_s3 = true
+capabilities = "CAPABILITY_NAMED_IAM"
