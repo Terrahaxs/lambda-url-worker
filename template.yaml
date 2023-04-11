@@ -2,11 +2,6 @@ AWSTemplateFormatVersion: '2010-09-09'
 Transform: AWS::Serverless-2016-10-31
 Description: >
   Terrahaxs API Worker
-Parameters:
-  RollbarKey:
-    Type: String
-    Description: Secret Key
-    Default: '{{resolve:secretsmanager:terrahaxs:SecretString:rollbar_key}}'
 Resources:
   WorkerFunction:
     Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
@@ -27,16 +22,13 @@ Resources:
       Architectures:
         - arm64
       AutoPublishAlias: live
+      Policies:
+        - AdministratorAccess # Note: update this policy to match your requirements/needs
       DeploymentPreference:
         Enabled: true
-        #Type: Linear10PercentEvery10Minutes
         Type: AllAtOnce
-        #Alarms:
-        #  - Ref: AliasErrorMetricGreaterThanZeroAlarm
-        #  - Ref: LatestVersionErrorMetricGreaterThanZeroAlarm
       Environment:
         Variables:
-          ROLLBAR_KEY: !Ref RollbarKey
           REGION: !Ref "AWS::Region"
           LOG_LEVEL: INFO
 Outputs:
