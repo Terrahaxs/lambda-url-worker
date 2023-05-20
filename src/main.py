@@ -1,5 +1,5 @@
 from mangum import Mangum
-from terrahaxs_worker import app
+from terrahaxs_runner import app
 
 def handler(event, context):  # pragma: no cover
     asgi_handler = Mangum(app)

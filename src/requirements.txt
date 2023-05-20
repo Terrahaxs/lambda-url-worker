@@ -1,4 +1,3 @@
-git+https://github.com/terrahaxs/worker.git@v0.0.5
+git+https://github.com/terrahaxs/worker.git@v0.0.11
 rollbar
-pydantic
 mangum
